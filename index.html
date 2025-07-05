@@ -1,23 +1,4 @@
-# Re-import necessary modules and regenerate the zip file after code state reset
-from zipfile import ZipFile
-import shutil
-
-# Restore files
-image_src = "/mnt/data/prazdnovanie.jpg"
-audio_src = "/mnt/data/nostalgiya_60s.mp3"
-image_dst = "/mnt/data/photo.jpg"
-audio_dst = "/mnt/data/music.mp3"
-
-shutil.copyfile(image_src, image_dst)
-shutil.copyfile(audio_src, audio_dst)
-
-# Create zip archive
-zip_path = "/mnt/data/toy_shakyru_ready_site.zip"
-with ZipFile(zip_path, "w") as zipf:
-    zipf.write(image_dst, arcname="photo.jpg")
-    zipf.write(audio_dst, arcname="music.mp3")
-
-    html_content = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="kk">
 <head>
   <meta charset="UTF-8" />
@@ -127,7 +108,14 @@ with ZipFile(zip_path, "w") as zipf:
       <p>Бұл қуанышта сіздің жылы лебізіңіз, ақ баталарыңыз біз үшін аса маңызды. Көңілді кештің сәні өздеріңізбен кіріп, шаттық пен естелікке толы сәттерге толсын!</p>
       <p><strong>💍 Той иелері:</strong><br>Әке: Ербол Жайлаубекұлы<br>Ана: Анаргүл Қуанышқызы</p>
       <p><strong>📅 Күні:</strong> 10 тамыз 2025 жыл<br><strong>🕕 Уақыты:</strong> 18:00<br><strong>📍 Мекенжайы:</strong> "Аруана" тойханасы, Астана қаласы</p>
-      <p><strong>Рақметпен:</strong> Жайлаубековтер әулеті</p>
+
+      <a href="https://www.google.com/maps/place/Aruana+Тойханасы/@51.144002,71.421" 
+         target="_blank"
+         style="background:#2ecc71; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:bold; display:inline-block; margin-top:15px;">
+        🗺️ Картаны ашу (Google Maps)
+      </a>
+
+      <p style="margin-top: 20px;"><strong>Рақметпен:</strong> Жайлаубековтер әулеті</p>
     </div>
 
     <div id="timer">Уақыт есептелуде...</div>
@@ -183,11 +171,11 @@ with ZipFile(zip_path, "w") as zipf:
       document.querySelectorAll('.rsvp button').forEach(b=>b.disabled=true);
     }
 
-    window.addEventListener('click', ()=>{ const a=document.getElementById('bgmusic'); if(a.paused) a.play(); });
+    window.addEventListener('click', ()=>{ 
+      const a=document.getElementById('bgmusic'); 
+      if(a.paused) a.play(); 
+    });
   </script>
 
 </body>
-</html>'''
-    zipf.writestr("index.html", html_content)
-
-zip_path
+</html>
