@@ -1,24 +1,151 @@
-<div class="invitation-text" style="background-color: rgba(0,0,0,0.5); padding: 20px; border-radius: 12px; max-width: 800px; margin: auto;">
-  <p style="font-size: 1.2rem; line-height: 1.6; font-weight: 400;">
-    <strong style="font-size: 1.4rem;">Құрметті ағайын-туыс, қадірлі жора-жолдас!</strong>
-    <br><br>
-    Өміріміздегі ең қуанышты, ең ұмытылмас сәттің куәсі болуға сіздерді шын жүректен шақырамыз!
-    <br><br>
-    Ұлымыз бен келініміздің / Қызымыз бен күйеу баламыздың
-    үлкен өмірге қадам басу салтанатына – <strong>ҮЙЛЕНУ ТОЙЫНА</strong>
-    арнайы шақырамыз.
-    <br><br>
-    Бұл қуанышта сіздің жылы лебізіңіз, ақ баталарыңыз біз үшін аса маңызды.
-    Көңілді кештің сәні өздеріңізбен кіріп, шаттық пен естелікке толы сәттерге толсын!
-    <br><br>
-    <strong>💍 Той иелері:</strong><br>
-    Әке: Ербол Жайлаубекұлы<br>
-    Ана: Анаргүл Қуанышқызы
-    <br><br>
-    <strong>📅 Күні:</strong> 10 тамыз 2025 жыл<br>
-    <strong>🕕 Уақыты:</strong> 18:00<br>
-    <strong>📍 Мекенжайы:</strong> "Аруана" тойханасы, Астана қаласы
-    <br><br>
-    <strong>Рақметпен:</strong> Жайлаубековтер әулеті
-  </p>
-</div>
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Тойға шақыру</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+      background: url('photo.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100%;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .invitation-text {
+      background-color: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin-bottom: 30px;
+    }
+    .invitation-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .invitation-text p strong {
+      font-size: 1.3rem;
+    }
+    #timer {
+      font-size: 1.8rem;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+    .rsvp {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .rsvp button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #f1c40f;
+      border: none;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .rsvp button:hover {
+      background-color: #d4ac0d;
+      color: white;
+    }
+    #counter {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    #whatsapp {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 3;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <div class="invitation-text">
+      <p><strong>Құрметті ағайын-туыс, қадірлі жора-жолдас!</strong></p>
+      <p>Өміріміздегі ең қуанышты, ең ұмытылмас сәттің куәсі болуға сіздерді шын жүректен шақырамыз!</p>
+      <p>Ұлымыз бен келініміздің / қызымыз бен күйеу баламыздың үлкен өмірге қадам басу салтанатына – <strong>ҮЙЛЕНУ ТОЙЫНА</strong> арнайы шақырамыз.</p>
+      <p>Бұл қуанышта сіздің жылы лебізіңіз, ақ баталарыңыз біз үшін аса маңызды. Көңілді кештің сәні өздеріңізбен кіріп, шаттық пен естелікке толы сәттерге толсын!</p>
+      <p><strong>💍 Той иелері:</strong><br>Әке: Ербол Жайлаубекұлы<br>Ана: Анаргүл Қуанышқызы</p>
+      <p><strong>📅 Күні:</strong> 10 тамыз 2025 жыл<br><strong>🕕 Уақыты:</strong> 18:00<br><strong>📍 Мекенжайы:</strong> "Аруана" тойханасы, Астана қаласы</p>
+      <p><strong>Рақметпен:</strong> Жайлаубековтер әулеті</p>
+    </div>
+
+    <div id="timer">Уақыт есептелуде...</div>
+
+    <div class="rsvp">
+      <button onclick="rsvp('yes')">✅ Барам</button>
+      <button onclick="rsvp('no')">❌ Бармаймын</button>
+    </div>
+
+    <div id="counter">Қатысушылар саны: <span id="count">0</span></div>
+  </div>
+
+  <a id="whatsapp" href="https://wa.me/77079361770" target="_blank">WhatsApp</a>
+
+  <audio id="bgmusic" src="music.mp3" autoplay loop></audio>
+
+  <script>
+    const eventDate = new Date('2025-08-10T18:00:00');
+    function updateTimer() {
+      const diff = eventDate - new Date();
+      if (diff < 0) {
+        document.getElementById('timer').textContent = 'Той басталды!';
+        clearInterval(interval);
+        return;
+      }
+      const days = Math.floor(diff / 864e5),
+            hours = Math.floor((diff / 36e5) % 24),
+            mins = Math.floor((diff / 6e4) % 60),
+            secs = Math.floor((diff / 1000) % 60);
+      document.getElementById('timer').textContent =
+        `${days} күн ${hours} сағат ${mins} мин ${secs} сек`;
+    }
+    const interval = setInterval(updateTimer, 1000);
+    updateTimer();
+
+    let count = 0, responded = false;
+    function rsvp(ans) {
+      if (responded) { alert('Сіз бұрын жауап беріп қойдыңыз!'); return; }
+      if (ans === 'yes') { count++; document.getElementById('count').textContent = count; }
+      alert(ans==='yes' ? 'Сіз "Барам" деп жауап бердіңіз!' : 'Сіз "Бармаймын" деп жауап бердіңіз!');
+      responded = true;
+      document.querySelectorAll('.rsvp button').forEach(b=>b.disabled=true);
+    }
+
+    window.addEventListener('click', ()=>{ const a=document.getElementById('bgmusic'); if(a.paused) a.play(); });
+  </script>
+
+</body>
+</html>
